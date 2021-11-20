@@ -1,0 +1,27 @@
+{
+  "sessionState": "cyrus-257512;p-11;vfs-0",
+  "latestClientVersion": "b10254540b15c315",
+  "methodResponses": [
+    [
+      "MaskedEmail/set",
+      {
+        "created": {
+          "k380": {
+            "createdBy": "",
+            "email": "kind.home9295@fastmail.com",
+            "id": "masked-58875024",
+            "createdAt": "2021-11-17T22:38:10Z",
+            "lastMessageAt": null,
+            "forDomain": ""
+          }
+        },
+        "newState": null,
+        "accountId": "uc65140d3",
+        "updated": {},
+        "oldState": null,
+        "destroyed": []
+      },
+      "0"
+    ]
+  ]
+}

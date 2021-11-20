@@ -1,0 +1,1 @@
+{"using":["https://www.fastmail.com/dev/user","urn:ietf:params:jmap:core"],"methodCalls":[["MaskedEmail/set",{"accountId":"u00000000","create":{"k380":{"state":"enabled","description":"Test from API","emailPrefix":""}}},"0"]]}

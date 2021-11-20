@@ -1,0 +1,28 @@
+{
+  "methodResponses": [
+    [
+      "MaskedEmail/get",
+      {
+        "list": [
+          {
+            "description": "Masked Email Example",
+            "state": "enabled",
+            "email": "kind.bell1113@fastmail.com",
+            "url": null,
+            "lastMessageAt": "2021-11-09T16:14:58Z",
+            "createdBy": "",
+            "createdAt": "2021-11-09T16:14:54Z",
+            "forDomain": "fastmail.com",
+            "id": "masked-58498248"
+          }
+        ],
+        "notFound": null,
+        "state": null,
+        "accountId": "u00000000"
+      },
+      "0"
+    ]
+  ],
+  "latestClientVersion": "72e59e09a09cb96c",
+  "sessionState": "cyrus-0;p-11;vfs-0"
+}
