@@ -1,4 +1,4 @@
-package com.restium.service.model
+package com.restium.app.model
 
 import com.restium.api.Browser
 import org.openqa.selenium.chrome.ChromeDriver

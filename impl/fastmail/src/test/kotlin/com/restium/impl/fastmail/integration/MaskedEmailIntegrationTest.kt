@@ -1,6 +1,6 @@
 package com.restium.impl.fastmail.integration
 
-import com.restium.impl.fastmail.model.MaskedEmailRequest
+import com.restium.impl.fastmail.model.CreateMaskedEmailRequest
 import com.restium.impl.fastmail.usecase.CreateMaskedEmailUseCase
 import com.restium.impl.fastmail.usecase.GetMaskedEmailUseCase
 import com.restium.impl.fastmail.usecase.RemoveMaskedEmailUseCase
@@ -17,7 +17,7 @@ class MaskedEmailIntegrationTest : AbstractIntegrationTest({
 
   test("Should create and remove masked email") {
     // given
-    val createRequest = MaskedEmailRequest(description = "New masked email")
+    val createRequest = CreateMaskedEmailRequest(description = "New masked email")
 
     // when
     val newMaskedEmailId = createMaskedEmailUseCase(session, createRequest)
@@ -26,7 +26,7 @@ class MaskedEmailIntegrationTest : AbstractIntegrationTest({
     val maskedEmails = getMaskedEmailUseCase(session)
 
     // then
-    val newMaskedEmail = maskedEmails.first { it.id == newMaskedEmailId }
+    val newMaskedEmail = maskedEmails.first { it.id==newMaskedEmailId }
     newMaskedEmail.id shouldBe newMaskedEmailId
     newMaskedEmail.description shouldBe "New masked email"
     newMaskedEmail.email shouldEndWith "@fastmail.com"
@@ -38,7 +38,7 @@ class MaskedEmailIntegrationTest : AbstractIntegrationTest({
     val maskedEmails2 = getMaskedEmailUseCase(session)
 
     // then
-    val newMaskedEmail2 = maskedEmails2.find { it.id == newMaskedEmailId }
+    val newMaskedEmail2 = maskedEmails2.find { it.id==newMaskedEmailId }
     newMaskedEmail2 shouldBe null
 
   }

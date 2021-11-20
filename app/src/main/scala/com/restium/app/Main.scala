@@ -1,15 +1,15 @@
-package com.restium.service
+package com.restium.app
 
 import cats.effect.implicits._
 import cats.effect.kernel.Resource
 import cats.effect.{IO, IOApp}
 import cats.implicits._
 import com.restium.api.WebsiteImplementation
+import com.restium.app.model.BrowserHolder
 import com.restium.impl.fastmail.{EntryPoint, UseCaseType}
-import com.restium.service.model.BrowserHolder
 import rs.ltt.jmap.client.Services
 
-import scala.jdk.FutureConverters.CompletionStageOps
+import scala.jdk.FutureConverters._
 
 object Main extends IOApp.Simple {
 

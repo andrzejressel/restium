@@ -1,10 +1,10 @@
-package com.restium.service.model
+package com.restium.app.model
 
 import cats.effect.kernel.Resource
 import cats.effect.std.Queue
 import cats.effect.{FiberIO, IO}
 import com.restium.api.WebsiteImplementation
-import com.restium.service.model.BrowserHolder.Browser
+import com.restium.app.model.BrowserHolder.Browser
 import org.openqa.selenium.chrome.{ChromeDriver, ChromeOptions}
 
 import scala.jdk.FutureConverters._
@@ -22,7 +22,6 @@ class BrowserHolder private (
 
   def accessBrowser(): Resource[IO, ChromeDriver] = Resource.eval(verifyInitEnded())
     .flatMap(_ => Resource.make(browserHolder.take)(browserHolder.offer)).map(_.driver)
-    .evalTap(_ => verifyInitEnded())
 
   private def verifyInitEnded(): IO[Unit] = initFiber.join.flatMap(_.embedNever)
 

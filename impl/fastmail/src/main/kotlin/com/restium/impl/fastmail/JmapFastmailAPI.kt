@@ -4,15 +4,15 @@ import com.restium.impl.fastmail.model.*
 import com.restium.jmap.BearerTokenHttpAuthentication
 import com.restium.jmap.method.call.maskedemail.GetMaskedEmailMethodCall
 import com.restium.jmap.method.call.maskedemail.SetMaskedEmailMethodCall
-import com.restium.jmap.method.response.maskedemail.CreateMaskedEmailMethodResponse
 import com.restium.jmap.method.response.maskedemail.GetMaskedEmailMethodResponse
+import com.restium.jmap.method.response.maskedemail.SetMaskedEmailMethodResponse
 import kotlinx.coroutines.guava.await
 import rs.ltt.jmap.client.JmapClient
 
 @Suppress("UnstableApiUsage")
 class JmapFastmailAPI {
 
-  suspend fun createMaskedEmail(session: Session, request: MaskedEmailRequest): MaskedEmailId {
+  suspend fun createMaskedEmail(session: Session, request: CreateMaskedEmailRequest): MaskedEmailId {
     return useJmapClient(session) { jmapClient ->
       val id = "000"
       val response = jmapClient
@@ -25,14 +25,14 @@ class JmapFastmailAPI {
           )
         )
         .await()
-        .getMain(CreateMaskedEmailMethodResponse::class.java)
+        .getMain(SetMaskedEmailMethodResponse::class.java)
 
       val created = response.created?.get(id)
       val error = response.notCreated?.get(id)
 
-      if (created != null) {
+      if (created!=null) {
         MaskedEmailId(created.id)
-      } else if (error != null) {
+      } else if (error!=null) {
         throw Exception("Cannot create masked email: ${error.description}")
       } else {
         throw IllegalStateException("Cannot deserialize response")
@@ -65,7 +65,7 @@ class JmapFastmailAPI {
           )
         )
         .await()
-        .getMain(CreateMaskedEmailMethodResponse::class.java)
+        .getMain(SetMaskedEmailMethodResponse::class.java)
     }
   }
 

@@ -9,7 +9,7 @@ import rs.ltt.jmap.common.entity.AbstractIdentifiableEntity;
 
 @EqualsAndHashCode(callSuper = false)
 @Value
-public class CreateMaskedEmailRequest extends AbstractIdentifiableEntity {
+public class SetMaskedEmailRequest extends AbstractIdentifiableEntity {
   @NonNull
   String state;
   @NonNull

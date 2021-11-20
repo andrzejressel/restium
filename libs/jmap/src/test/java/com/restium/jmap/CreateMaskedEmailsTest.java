@@ -1,10 +1,10 @@
 package com.restium.jmap;
 
 import com.google.common.collect.ImmutableMap;
-import com.restium.jmap.entity.CreateMaskedEmailRequest;
-import com.restium.jmap.entity.CreatedMaskedEmail;
+import com.restium.jmap.entity.SetMaskedEmail;
+import com.restium.jmap.entity.SetMaskedEmailRequest;
 import com.restium.jmap.method.call.maskedemail.SetMaskedEmailMethodCall;
-import com.restium.jmap.method.response.maskedemail.CreateMaskedEmailMethodResponse;
+import com.restium.jmap.method.response.maskedemail.SetMaskedEmailMethodResponse;
 import okhttp3.mockwebserver.MockResponse;
 import okhttp3.mockwebserver.RecordedRequest;
 import org.junit.jupiter.api.Test;
@@ -25,13 +25,13 @@ public class CreateMaskedEmailsTest extends AbstractJmapTest {
 
     server.enqueue(new MockResponse().setBody(readResourceAsString("create-maskedemail/02-response.json")));
 
-    var maskedEmail = new CreateMaskedEmailRequest("enabled", "Test from API", null, "");
+    var maskedEmail = new SetMaskedEmailRequest("enabled", "Test from API", null, "");
 
     // when
     var response = jmapClient
       .call(new SetMaskedEmailMethodCall(ACCOUNT_ID, null, ImmutableMap.of("k380", maskedEmail), null, null, null))
       .get()
-      .getMain(CreateMaskedEmailMethodResponse.class);
+      .getMain(SetMaskedEmailMethodResponse.class);
 
     server.takeRequest(); //session
     RecordedRequest placeholderRequest = server.takeRequest(); //placeholder
@@ -39,7 +39,7 @@ public class CreateMaskedEmailsTest extends AbstractJmapTest {
     // then
     assertThat(response.getCreated().values())
       .containsExactly(
-        new CreatedMaskedEmail("kind.home9295@fastmail.com", "", "2021-11-17T22:38:10Z", null, "")
+        new SetMaskedEmail("kind.home9295@fastmail.com", "", "2021-11-17T22:38:10Z", null, "")
       );
 
     assertThat(placeholderRequest.getBody().inputStream())

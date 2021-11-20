@@ -42,8 +42,8 @@ dependencies {
   }
 
   implementation(project(":api"))
-  implementation(project(":libs:jmap"))
   implementation(project(":impl:fastmail"))
+  implementation("rs.ltt.jmap:jmap-client:0.7.4")
 
   testImplementation("junit:junit:4.13.2")
   testImplementation("org.scalatest:scalatest_2.13:3.2.9")
@@ -52,5 +52,5 @@ dependencies {
 }
 
 application {
-  mainClass.set("com.andrzejressel.browserapi.service.Main")
+  mainClass.set("com.restium.app.Main")
 }
